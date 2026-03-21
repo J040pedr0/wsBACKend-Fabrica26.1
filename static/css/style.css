@@ -95,6 +95,8 @@ input, select, textarea {
     color: #f0f0f0;
     border-radius: 6px;
     padding: 8px 12px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 input:focus, select:focus, textarea:focus {
     border-color: #00b4d8;
@@ -141,8 +143,19 @@ a:hover {
     padding-bottom: 20px;
 }
 body {
-    background-image: url('/static/images/rick-and-morty-4-temp1.jpg');
-    background-size: cover;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     background-attachment: fixed;
-    background-position: center;
+    color: #f0f0f0;
+}
+label {
+    color: #00b4d8;  /* azul claro para contraste */
+    font-weight: bold;
+    margin-top: 8px;
+    display: block;
+}
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+    transform: scale(1.1);
+    vertical-align: middle;
 }
