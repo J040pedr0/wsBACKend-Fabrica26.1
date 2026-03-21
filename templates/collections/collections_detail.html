@@ -1,0 +1,47 @@
+@"
+{% extends 'base.html' %}
+
+{% block title %}{{ collection.name }}{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center">
+    <h2>{{ collection.name }}</h2>
+    <div>
+        <a href="{% url 'edit_collection' pk=collection.id %}" class="btn btn-secondary">Editar</a>
+        <a href="{% url 'delete_collection' pk=collection.id %}" class="btn btn-danger">Excluir</a>
+    </div>
+</div>
+
+<p>{{ collection.description }}</p>
+<p><strong>Pública:</strong> {% if collection.is_public %}Sim{% else %}Não{% endif %}</p>
+
+<h3>Personagens nesta coleção</h3>
+<div class="row">
+    {% for character in collection.characteristics.all %}
+    <div class="col-md-3">
+        <div class="card character-card">
+            <img src="{{ character.image }}" class="card-img-top" alt="{{ character.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ character.name }}</h5>
+                <p class="card-text">Status: {{ character.status }}</p>
+
+                <!-- botão remover corrigido -->
+                <a href="{% url 'remove_character_from_collection' collection_id=collection.id character_id=character.id %}" 
+                   class="btn btn-sm btn-danger">
+                   Remover
+                </a>
+
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>Nenhum personagem nesta coleção ainda.</p>
+    {% endfor %}
+</div>
+
+<a href="{% url 'search_characters' %}?collection_id={{ collection.id }}" class="btn btn-primary">
+    Adicionar Personagens
+</a>
+
+{% endblock %}
+"@ | Out-File -FilePath templates\collections\collection_detail.html -Encoding utf8

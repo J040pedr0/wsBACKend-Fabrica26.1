@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Buscar Personagens{% endblock %}
+{% block content %}
+<h2>Buscar Personagens (Rick and Morty)</h2>
+<form method="get" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="name" class="form-control" placeholder="Nome do personagem" value="{{ name }}">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+    {% if collection_id %}
+    <input type="hidden" name="collection_id" value="{{ collection_id }}">
+    {% endif %}
+</form>
+
+{% if characters %}
+<div class="row">
+    {% for char in characters %}
+    <div class="col-md-3">
+        <div class="card character-card">
+            <img src="{{ char.image }}" class="card-img-top" alt="{{ char.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ char.name }}</h5>
+                <p class="card-text">Status: {{ char.status }}</p>
+                <form method="post" action="{% url 'import_character' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="external_id" value="{{ char.external_id }}">
+                    {% if collection_id %}
+                    <input type="hidden" name="collection_id" value="{{ collection_id }}">
+                    {% endif %}
+                    <button type="submit" class="btn btn-primary btn-sm">Adicionar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% elif name %}
+<p>Nenhum personagem encontrado.</p>
+{% endif %}
+{% endblock %}

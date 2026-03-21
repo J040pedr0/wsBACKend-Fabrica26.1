@@ -1,0 +1,148 @@
+/* static/css/style.css */
+
+/* Fundo com leve padrão de portal */
+body {
+    background: linear-gradient(135deg, #1a1e2b 0%, #2a2f3f 100%);
+    color: #f0f0f0;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Navbar personalizada */
+.navbar {
+    background: #0f0f1a !important;
+    border-bottom: 2px solid #00b4d8;
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #00b4d8 !important;
+}
+.navbar-nav .nav-link {
+    color: #cbd5e6 !important;
+    transition: color 0.2s;
+}
+.navbar-nav .nav-link:hover {
+    color: #00b4d8 !important;
+}
+
+/* Cards de coleção */
+.card {
+    background: #232838;
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,180,216,0.2);
+}
+.card-body {
+    color: #eaeef2;
+}
+.card-title {
+    color: #00b4d8;
+    font-weight: bold;
+}
+
+/* Cards de personagem */
+.character-card {
+    background: #1f2538;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.character-card img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+.character-card .card-body {
+    padding: 1rem;
+    text-align: center;
+}
+.character-card .btn {
+    margin-top: 8px;
+}
+
+/* Botões */
+.btn-primary {
+    background: #00b4d8;
+    border: none;
+    transition: background 0.2s;
+}
+.btn-primary:hover {
+    background: #0096c7;
+}
+.btn-danger {
+    background: #d62828;
+    border: none;
+}
+.btn-danger:hover {
+    background: #b91c1c;
+}
+.btn-secondary {
+    background: #6c757d;
+    border: none;
+}
+.btn-secondary:hover {
+    background: #5a6268;
+}
+
+/* Formulários */
+input, select, textarea {
+    background: #2c3246;
+    border: 1px solid #3e445b;
+    color: #f0f0f0;
+    border-radius: 6px;
+    padding: 8px 12px;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: #00b4d8;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0,180,216,0.3);
+}
+
+/* Alertas */
+.alert {
+    border-radius: 8px;
+    border: none;
+}
+.alert-success {
+    background: #2e7d32;
+    color: #fff;
+}
+.alert-error {
+    background: #c62828;
+    color: #fff;
+}
+.alert-warning {
+    background: #ed6c02;
+    color: #fff;
+}
+
+/* Títulos */
+h1, h2, h3 {
+    color: #00b4d8;
+    font-weight: bold;
+}
+
+/* Links */
+a {
+    color: #00b4d8;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Container principal */
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+body {
+    background-image: url('/static/images/rick-and-morty-4-temp1.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
