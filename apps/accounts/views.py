@@ -1,23 +1,25 @@
 from rest_framework import generics, permissions, status
-
+from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate, get_user_model
 from .serializers import UserSerializer, RegisterSerializer
-from rest_framework.views import APIView, Response
+from rest_framework.views import APIView
+
+
+
 
 User = get_user_model()
 # view Registrando novos usuários
-class Registerview(generics.CreateAPIView):
+class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = RegisterSerializer
     
-    def get_object(self):
-        return self.request.user
+    
 
 # view atualiza usuarios
 
-class UserDetailview(generics.RetrieveUpdateAPIView):
+class UserDetailView(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
