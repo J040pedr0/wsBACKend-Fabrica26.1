@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  environment:
+      - POSTGRES_DB=dev_db
+      - POSTGRES_USER=dev_user
+      - POSTGRES_PASSWORD=dev_password
+  ports:
+      - "5432:5432"
+  healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dev_user"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    values:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_NAME=dev_db
+      - DB_USER=dev_user
+      - DB_PASSAWORLD=dev_passaword
+      - DB_HOST=db
+      - DEBUG=1
+      - SECRET_KEY=django-insecure-dev-key-change-in-production
+volumes:
+  postgres_data:
