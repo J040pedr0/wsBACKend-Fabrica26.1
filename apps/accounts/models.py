@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     
     favorite_character = models.CharField(
-        max_length = 35,
+        max_length = 80,
         blank = True,
         choices = [
         # Utilizei IA para gerar uma lista de personagens de anime populares, abrangendo várias séries e gêneros, para oferecer aos usuários uma ampla variedade de opções ao escolher seu personagem favorito.Fiz isso para não ter que perder tempo pesquisando e selecionando manualmente os personagens, garantindo uma lista diversificada e representativa dos animes mais conhecidos.(EXISTE UM DETALHE PARA FÃS DE GRIFFITH RSRS)
@@ -108,7 +108,7 @@ class User(AbstractUser):
     def is_berserk_fan(self):
         return self.favorite_character  == 'Griffith (Berserk)'
     
-    def get_nickname():
+    def get_nickname(self):
         if self.favorite_character:
             return "Doente"
         return f"Fã de {self.favorite_character_display()}"
